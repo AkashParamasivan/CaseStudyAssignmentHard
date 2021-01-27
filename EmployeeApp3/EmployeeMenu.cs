@@ -35,10 +35,17 @@ namespace EmployeeApp3
 								{
 									do
 									{
+									try
+									{
 										em.TakeEmployeeDetailsFromUser();
-
 										employees.Add(em.Id, Tuple.Create(em.Name, em.Age, em.Salary));
-										Console.WriteLine("To continue entering employee details enter 1, to exit enter 0");
+                                    }
+                            catch (Exception e1)
+                            {
+                                Console.WriteLine("-------ID is duplicate-------", e1.Message);
+                            }
+
+                            Console.WriteLine("To continue entering employee details enter 1, to exit enter 0");
 										Checker = Convert.ToInt32(Console.ReadLine());
 									} while (Checker == 1);
 								}
